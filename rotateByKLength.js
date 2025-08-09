@@ -1,18 +1,30 @@
 function rotateByLen(arr, len) {
     const result = [];
-    let n = 0
-    let count = 0;
-    for (let k = len - 1; k >= 0; k--) {
-        result.push(arr[n + k]);
-        if (k === 0) {
-            count++;
-            k = len;
-            n = len * count
-            if ((n + len) > arr.length) {
-                k = len - ((n + len) - arr.length)
-            }
+    // let n = 0
+    // let count = 0;
+    // for (let k = len - 1; k >= 0; k--) {
+    //     result.push(arr[n + k]);
+    //     if (k === 0) {
+    //         count++;
+    //         k = len;
+    //         n = len * count
+    //         if ((n + len) > arr.length) {
+    //             k = len - ((n + len) - arr.length)
+    //         }
+    //     }
+    //     if (result.length === arr.length) break
+    // }
+
+
+    for (let k = 0; k < arr.length; k += len) {
+
+        let end = k + len - 1;
+
+        if (end > arr.length - 1) end = arr.length - 1
+
+        for (let j = end; j >= k; j--) {
+            result.push(arr[j])
         }
-        if (result.length === arr.length) break
     }
 
     return result
